@@ -13,6 +13,7 @@
     <div class="controls">
       <button v-on:click="select('Indoor')">Show Indoor</button>
       <button v-on:click="select('Outdoor')">Show Outdoor</button>
+      <button v-on:click="select('All')">Show All</button>
     </div>
 
     <PlantList :plants="plants"/>
@@ -26,18 +27,26 @@ import PlantList from "../components/PlantList.vue"
 export default {
   name: "Buy",
   components: {
-    PlantList,
+    PlantList
   },
   data(){
     return{
       searchText: '',
+      type : '',
     }
   },
   computed:{
     plants() {
-      return this.$root.$data.plants.filter(plant =>
-        plant.species.toLowerCase().search(this.searchText.toLowerCase()) >= 0);;
-    }
+      let temp = this.$root.$data.plants.filter(plant =>
+        plant.species.toLowerCase().search(this.searchText.toLowerCase()) >= 0);
+
+      if(this.type == '' || this.type == 'All'){
+        return temp;
+      }
+      else{
+        return temp.filter(plant => plant.type == this.type);
+      }
+    },
   },
   methods:{
     select(type){
@@ -49,7 +58,7 @@ export default {
 </script>
 <style scoped>
 h1{
-  font-size: 100px;
+  font-size: 75px;
   margin-left: 50px;
   color: #4D774E;
 }
