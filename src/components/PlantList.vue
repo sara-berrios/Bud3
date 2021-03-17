@@ -2,17 +2,15 @@
 <div class="wrapper">
   <div class="inventory">
     <div class="plant" v-for="plant in plants" :key="plant.id">
-      <div class="info">
-        <h1>{{plant.species}}</h1>
-        <p>{{plant.type}}</p>
-      </div>
       <div class="image">
         <img :src="'/images/'+plant.image">
       </div>
-      <div class="price">
-        <h2>{{plant.price}}</h2>
-        <button v-on:click="addToWishlist(plant)" class="auto">Add to Wishlist</button>
+      <div class="info">
+        <h1 id="species">{{plant.species}}</h1>
+        <h2 id="price">{{plant.price}}</h2>
+        <p>{{plant.type}}</p>
       </div>
+      <button v-on:click="addToWishlist(plant)" class="auto">Add to Wishlist</button>
     </div>
   </div>
 </div>
@@ -45,21 +43,20 @@ export default {
   justify-content: center;
 }
 
-.plants {
+.inventory {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.inventory {
+.plant {
   margin: 10px;
   margin-top: 50px;
   width: 200px;
 }
 
 .plant img {
-  border: 2px solid #333;
   height: 250px;
   width: 200px;
   object-fit: cover;
@@ -68,38 +65,32 @@ export default {
 .plant .image {
   display: flex;
   justify-content: center;
-  margin-bottom: 5px;
 }
 
 .info {
-  background: #F2921D;
-  color: #000;
-  padding: 10px 30px;
   height: 80px;
 }
 
 .info h1 {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .info h2 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .info p {
   margin: 0px;
-  font-size: 10px;
-}
-
-.price {
-  display: flex;
+  font-size: 12px;
 }
 
 button {
   height: 50px;
-  background: #000;
-  color: white;
+  background-color: #fcf9f3;
   border: none;
+}
+button:hover{
+  background-color: #4D774E;
 }
 
 .auto {

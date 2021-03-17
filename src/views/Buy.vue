@@ -1,17 +1,18 @@
 <template>
   <div>
+  <h1>Buy Plants</h1>
+
     <div class="wrapper">
-      <h1>Buy a variety of indoor and outdoor plants</h1>
       <div class="search">
         <form class="pure-form">
-          <i class="fas fa-search"></i><input v-model="searchText" />
+          <i class="fas fa-search"></i><input v-model="searchText"/>
         </form>
       </div>
+    </div>
 
-      <div class="controls">
-        <button v-on:click="select('Indoor')">Show Indoor</button>
-        <button v-on:click="select('Outdoor')">Show Outdoor</button>
-      </div>
+    <div class="controls">
+      <button v-on:click="select('Indoor')">Show Indoor</button>
+      <button v-on:click="select('Outdoor')">Show Outdoor</button>
     </div>
 
     <PlantList :plants="plants"/>
@@ -47,6 +48,11 @@ export default {
 
 </script>
 <style scoped>
+h1{
+  font-size: 100px;
+  margin-left: 50px;
+  color: #4D774E;
+}
 .wrapper {
   display: flex;
   align-items: center;
@@ -58,7 +64,24 @@ export default {
   border-radius: 4px;
   width: 50%;
 }
-
+button{
+  margin: 30px;
+  border: none;
+  background-color:#4D774E;
+  border-radius: 25px;
+  width: 150px;
+  height: 50px;
+  font-weight: bold;
+}
+button:hover{
+  background-color: #fcf9f3;
+  border: 2px solid #73AD21;
+}
+.controls{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 form {
   display: table;
   width: 100%;
